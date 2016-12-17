@@ -1,0 +1,97 @@
+var stylesGenerator = function (context) {
+  var doc = context.document
+  var data = doc.documentData()
+  var layers = context.selection
+  var total = layers.count()
+  var textStyles = data.layerTextStyles()
+  var layerStyles = data.layerStyles()
+  var stylesArray = []
+  var addedText = 0
+  var addedShared = 0
+  var updatedStyle = 0
+
+  if (total) currentStyles()
+  else exit(false)
+
+  // check for already present styles
+  function currentStyles() {
+    for (var k = 0; k < textStyles.numberOfSharedStyles(); k++){
+      var style = textStyles.objects().objectAtIndex(k)
+      var name = style.name()
+
+      stylesArray.push(name)
+    }
+
+    for (var j = 0; j < layerStyles.numberOfSharedStyles(); j++){
+      var style = layerStyles.objects().objectAtIndex(j)
+      var name = style.name()
+
+      stylesArray.push(name)
+    }
+
+    cycle()
+  }
+
+  // cycle the selected layers
+  function cycle() {
+    for (var i = 0; i < total; i++) {
+      var layer = layers[i]
+      var name = layer.name()
+      var style = layer.style()
+      var exist = check(name)
+
+      if (exist) remove(layer, name, style)
+      castCreate(layer, name, style)
+    }
+
+    exit(true)
+  }
+
+  // check the layer type (text, shape) and create the related shared style
+  function castCreate(layer, name, style) {
+    if (layer.class() == 'MSTextLayer') {
+      textStyles.addSharedStyleWithName_firstInstance(name, style)
+      addedText++
+
+    } else if (layer.class() == 'MSShapeGroup') {
+      layerStyles.addSharedStyleWithName_firstInstance(name, style)
+      addedShared++
+
+    }
+  }
+
+  // check the existence of a style with the same name
+  function check(name) {
+    if (stylesArray.includes(name)) return true
+    else return false
+  }
+
+  // remove the already existing style
+  function remove(layer, name, style) {
+    log(style)
+    // todo remove style
+    // log(name + ' must be removed!')
+    updatedStyle++
+  }
+
+  // show a message and reload the inspector
+  function exit(passed) {
+    var message
+
+    if (passed) {
+      message = 'Generated: '
+        + addedText + ' text styles, '
+        + addedShared + ' shared styles. '
+        + updatedStyle + ' styles updated.'
+
+    } else {
+      message = 'No layer(s) selected!'
+
+    }
+
+    doc.showMessage(message)
+    doc.reloadInspector()
+  }
+}
+
+// refs: https://medium.com/@marianomike/the-beginners-guide-to-writing-sketch-plugins-part-6-exporting-data-36865e571122#.tc7njd4ov
