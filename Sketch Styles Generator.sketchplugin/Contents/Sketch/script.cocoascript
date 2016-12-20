@@ -8,12 +8,13 @@ var stylesGenerator = function (context) {
   var stylesArray = []
   var addedText = 0
   var addedShared = 0
-  var updatedStyle = 0
+  var skippedStyle = 0
 
+  // conclude the process if no layers are selected
   if (total) currentStyles()
   else exit(false)
 
-  // check for already present styles
+  // check and store the existing styles
   function currentStyles() {
     for (var k = 0; k < textStyles.numberOfSharedStyles(); k++){
       var style = textStyles.objects().objectAtIndex(k)
@@ -40,38 +41,32 @@ var stylesGenerator = function (context) {
       var style = layer.style()
       var exist = check(name)
 
-      if (exist) remove(layer, name, style)
-      castCreate(layer, name, style)
+      if (exist) skippedStyle++
+      else castCreate(layer, name, style)
     }
 
     exit(true)
   }
 
-  // check the layer type (text, shape) and create the related shared style
+  // cast the layer type (text, shape) and create the related shared style
   function castCreate(layer, name, style) {
-    if (layer.class() == 'MSTextLayer') {
+    var type = layer.class()
+
+    if (type == 'MSTextLayer') {
       textStyles.addSharedStyleWithName_firstInstance(name, style)
       addedText++
 
-    } else if (layer.class() == 'MSShapeGroup') {
+    } else if (type == 'MSShapeGroup') {
       layerStyles.addSharedStyleWithName_firstInstance(name, style)
       addedShared++
 
     }
   }
 
-  // check the existence of a style with the same name
+  // check the existence of a style
   function check(name) {
     if (stylesArray.includes(name)) return true
     else return false
-  }
-
-  // remove the already existing style
-  function remove(layer, name, style) {
-    log(style)
-    // todo remove style
-    // log(name + ' must be removed!')
-    updatedStyle++
   }
 
   // show a message and reload the inspector
@@ -82,7 +77,7 @@ var stylesGenerator = function (context) {
       message = 'Generated: '
         + addedText + ' text styles, '
         + addedShared + ' shared styles. '
-        + updatedStyle + ' styles updated.'
+        + 'Skipped: ' + skippedStyle + ' styles.'
 
     } else {
       message = 'No layer(s) selected!'
@@ -93,5 +88,3 @@ var stylesGenerator = function (context) {
     doc.reloadInspector()
   }
 }
-
-// refs: https://medium.com/@marianomike/the-beginners-guide-to-writing-sketch-plugins-part-6-exporting-data-36865e571122#.tc7njd4ov
