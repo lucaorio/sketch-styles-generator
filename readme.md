@@ -12,7 +12,7 @@ Follow me [@lucaorio_](https://twitter.com/lucaorio_) for updates, help and othe
 - [Usage](#usage)
 - [FAQ](#faq)
 - [License](#license)
-
+- [Contacts](#contacts)
 
 ## Why this Plugin?
 * Sketch doesn't allow to generate **multiple Shared Styles** (text, shapes or both of them) at once ☹️
@@ -68,3 +68,10 @@ Sketch Styles Generator will detect the kind of layer you selected, and automati
 
 ## License
 ![https://github.com/lucaorio/sketch-styles-generator/blob/master/license](https://img.shields.io/badge/license-MIT-blue.svg)
+
+***
+
+## Contacts
+* Twitter [@lucaorio](http://twitter.com/@lucaorio_)
+* Website [lucaorio.com](http://lucaorio.com)
+* Email [luca.o@me.com](mailto:luca.o@me.com)
