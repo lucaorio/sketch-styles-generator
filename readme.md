@@ -61,7 +61,7 @@ $ open Sketch\ Styles\ Generator.sketchplugin
 If there are multiple layers with the same name, the Style generation is triggered just on the first one. After using the plugin on a daily basis, I found it more useful than a Shared Style deleting/updating/duplicating. I'm open to iterate on the plugin and change the behavior, if needed. Ping me [@lucaorio_](https://twitter.com/lucaorio_) if you have other ideas!
 
 #### Why there's no shortcut?
-When it comes to shortcuts, it's a jungle out there. No specific conventions, no rules. Instead of forcing everyone to a specific shortcut, I suggest you to [create your own one](http://sketchshortcuts.com).
+When it comes to shortcuts, it's a jungle out there. No specific conventions, no rules. Instead of forcing everyone to a specific shortcut, I suggest you to [create your own one](http://sketchshortcuts.com), or just trigger the plugin with the **amazing** [Sketch Runner](http://sketchrunner.com).
 
 #### What happens if in my multiple selection there are some Symbols?
 Sketch Styles Generator will detect the kind of layer you selected, and automatically skip Symbols and other entities that can't be converted into a Text/Shared Style.
