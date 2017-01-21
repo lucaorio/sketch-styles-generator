@@ -11,6 +11,7 @@ Follow me [@lucaorio_](https://twitter.com/lucaorio_) for updates, help and othe
 - [Installation](#installation)
 - [Usage](#usage)
 - [FAQ](#faq)
+- [Integrations](#integrations)
 - [License](#license)
 - [Contacts](#contacts)
 
@@ -19,7 +20,7 @@ Follow me [@lucaorio_](https://twitter.com/lucaorio_) for updates, help and othe
 * Sketch appends a ` Style` suffix to the name of **every style** you try to create 😫
 * Craft and other tools generate guidelines that may not **fit your app styling** 🤔
 
-If you experienced at least one of the problems above, you know how painful the boostrap of a *design system* can be. The manual creation, renaming and double-check of every Shared Style is a slow process. And time is a precious resource (aka *we got a lot of shit to do*).
+If you experienced at least one of the problems above, you know how painful the bootstrap of a *design system* can be. The manual creation, renaming and double-check of every Shared Style is a slow process. And time is a precious resource (aka *we got a lot of shit to do*).
 
 **Sketch Styles Generator** allows you to select any amount of layers (text, shapes, or all of them at once), and generate multiple Shared Styles named exactly like the layer itself. Have a look at the [usage](#usage) section to know more about how to use it.
 
@@ -47,24 +48,29 @@ Open the plugin to install it in [Sketch](http://sketchapp.com)
 $ open Sketch\ Styles\ Generator.sketchplugin
 ```
 
-
 ## Usage
 * **Rename** the layers you want to generate your Shared Styles from. The speed of this boring process can be *dramatically* improved by using plugins like [Find-And-Replace](https://github.com/mscodemonkey/Sketch-Find-And-Replace) and [RenameIt](https://github.com/rodi01/RenameIt).
 * **Select** all of them, it doesn't matter if they are Shape or Text entities
-* **Run** the plugin by clicking `Plugins->Styles Generator->Generate Shared Styles`
+* **Run** the plugin by clicking `Plugins->Styles Generator->Generate Shared Styles`, or by using the `ctrl`+`cmd`+`s` shortcut
 * A little log on the bottom of the window will show you how many Styles were generated, and how many [were skipped](#faq).
 
 ![Styles Generator Usage](images/img-usage.gif)
+
+*Sketch Styles Generator* is now fully integrated with [Sketch Runner](http://bit.ly/SketchRunnerWebsite), the ultimate tool to speed up your Sketch workflow. You can trigger the plugin by simply typing its first letters, in pure Spotlight style!
+
+![Sketch Runner Integration](images/img-sketch-runner.jpg)
 
 ## FAQ
 #### What does _skipped_ mean?
 If there are multiple layers with the same name, the Style generation is triggered just on the first one. After using the plugin on a daily basis, I found it more useful than a Shared Style deleting/updating/duplicating. I'm open to iterate on the plugin and change the behavior, if needed. Ping me [@lucaorio_](https://twitter.com/lucaorio_) if you have other ideas!
 
-#### Why there's no shortcut?
-When it comes to shortcuts, it's a jungle out there. No specific conventions, no rules. Instead of forcing everyone to a specific shortcut, I suggest you to [create your own one](http://sketchshortcuts.com), or just trigger the plugin with the **amazing** [Sketch Runner](http://sketchrunner.com).
-
 #### What happens if in my multiple selection there are some Symbols?
 Sketch Styles Generator will detect the kind of layer you selected, and automatically skip Symbols and other entities that can't be converted into a Text/Shared Style.
+
+## Integrations
+<a href="http://bit.ly/SketchRunnerWebsite">
+  <img width="160" height="40" src="http://sketchrunner.com/img/badge_blue.png">
+</a>
 
 ## License
 ![https://github.com/lucaorio/sketch-styles-generator/blob/master/license](https://img.shields.io/badge/license-MIT-blue.svg)
