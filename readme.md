@@ -35,7 +35,7 @@ If you experienced at least one of the problems above, you know how painful the 
 #### From the Terminal
 Clone the Github repo
 ```
-$ git clone https://github.com/lucaorio/sketch-style-generator
+$ git clone https://github.com/lucaorio/sketch-styles-generator
 ```
 
 Move to the plugin directory
