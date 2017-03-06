@@ -5,83 +5,104 @@ var stylesGenerator = function (context) {
   var total = layers.count()
   var textStyles = data.layerTextStyles()
   var layerStyles = data.layerStyles()
-  var stylesArray = []
-  var addedText = 0
-  var addedShared = 0
-  var skippedStyle = 0
+  var textStylesAmount = textStyles.numberOfSharedStyles()
+  var sharedStylesAmount = layerStyles.numberOfSharedStyles()
+  var logs = {text: 0, layer: 0, overridden: 0, skipped: 0}
+  var stylesObj = {}
+  var selection = []
 
-  // conclude the process if no layers are selected
-  if (total) currentStyles()
+  // ===================================
+  // pre-check
+  // ===================================
+
+  // kill process if no layers are selected, or store the pre-existing styles
+  if (total) styles()
   else exit(false)
 
-  // check and store the existing styles
-  function currentStyles() {
-    for (var k = 0; k < textStyles.numberOfSharedStyles(); k++){
-      var style = textStyles.objects().objectAtIndex(k)
-      var name = style.name()
+  // ===================================
+  // existing styles
+  // ===================================
 
-      stylesArray.push(name)
+  // iterate on the pre-existing styles
+  function styles() {
+    for (var i = 0; i < textStylesAmount; i++){
+      var style = textStyles.objects().objectAtIndex(i)
+      pushStyles(style.name(), style)
     }
 
-    for (var j = 0; j < layerStyles.numberOfSharedStyles(); j++){
-      var style = layerStyles.objects().objectAtIndex(j)
-      var name = style.name()
-
-      stylesArray.push(name)
+    for (var i = 0; i < sharedStylesAmount; i++){
+      var style = layerStyles.objects().objectAtIndex(i)
+      pushStyles(style.name(), style)
     }
 
-    cycle()
+    compare()
   }
 
-  // cycle the selected layers
-  function cycle() {
+  // generate an array containing the pre-existing styles
+  function pushStyles(name, style, type) {
+    stylesObj[name] = style
+  }
+
+  // ===================================
+  // styles comparison
+  // ===================================
+
+  // compare the selected layers with the list of existing one
+  function compare() {
     for (var i = 0; i < total; i++) {
       var layer = layers[i]
+      var type = layer.class()
       var name = layer.name()
       var style = layer.style()
-      var exist = check(name)
 
-      if (exist) skippedStyle++
-      else castCreate(layer, name, style)
+      if (name in stylesObj) overwrite(layer, type, name, style)
+      else create(name, style, type)
     }
 
     exit(true)
   }
 
-  // cast the layer type (text, shape) and create the related shared style
-  function castCreate(layer, name, style) {
-    var type = layer.class()
+  // ===================================
+  // create or overwrite styles
+  // ===================================
 
+  // cast the layer type (text, shape) and create the related shared style
+  function create(name, style, type) {
     if (type == 'MSTextLayer') {
       textStyles.addSharedStyleWithName_firstInstance(name, style)
-      addedText++
-
+      logs.text++
     } else if (type == 'MSShapeGroup') {
       layerStyles.addSharedStyleWithName_firstInstance(name, style)
-      addedShared++
-
+      logs.layer++
     }
+
+    pushStyles(name, style, type)
   }
 
-  // check the existence of a style
-  function check(name) {
-    if (stylesArray.includes(name)) return true
-    else return false
+  // overwrite the related shared style
+  function overwrite(layer, type, name, style) {
+    var stylesPointer = (type == 'MSTextLayer') ? textStyles : layerStyles
+
+    stylesPointer.updateValueOfSharedObject_byCopyingInstance(stylesObj[name], style)
+    stylesPointer.synchroniseInstancesOfSharedObject_withInstance(stylesObj[name], style)
+    logs.overridden++
   }
 
-  // show a message and reload the inspector
-  function exit(passed) {
+  // ===================================
+  // exit
+  // ===================================
+
+  // sketch logging, inspector reload
+  function exit(executed) {
     var message
 
-    if (passed) {
+    if (executed) {
       message = 'Generated: '
-        + addedText + ' text styles, '
-        + addedShared + ' shared styles. '
-        + 'Skipped: ' + skippedStyle + ' styles.'
-
+        + logs.text + ' text styles, '
+        + logs.layer + ' shared styles. '
+        + 'Forced Overrides: ' + logs.overridden + '.'
     } else {
       message = 'No layer(s) selected!'
-
     }
 
     doc.showMessage(message)
