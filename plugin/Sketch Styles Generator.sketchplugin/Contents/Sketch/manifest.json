@@ -20,7 +20,7 @@
     "title" : "Styles Generator"
   },
   "identifier" : "com.example.sketch.bb02ff74-b75f-4814-9c3c-e7cf0697d60a",
-  "version" : "1.1",
+  "version" : "1.2",
   "description" : "Programmatically generate multiple Shared Styles, based on their layer names",
   "authorEmail" : "luca.o@me.com",
   "name" : "Sketch Styles Generator"

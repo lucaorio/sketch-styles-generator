@@ -61,8 +61,8 @@ $ open Sketch\ Styles\ Generator.sketchplugin
 ![Sketch Runner Integration](images/img-sketch-runner.jpg)
 
 ## FAQ
-#### What does _skipped_ mean?
-If there are multiple layers with the same name, the Style generation is triggered just on the first one. After using the plugin on a daily basis, I found it more useful than a Shared Style deleting/updating/duplicating. I'm open to iterate on the plugin and change the behavior, if needed. Ping me [@lucaorio_](https://twitter.com/lucaorio_) if you have other ideas!
+#### What does _Forced Overrides_ mean?
+If there are multiple layers with the same name **during the generation**, just the first one will be used to create a Shared Style. Later on, if you add a layer with the same name as an already existing Shared Style, the style itself will be **overridden**, and all the related instances updated.
 
 #### What happens if in my multiple selection there are some Symbols?
 Sketch Styles Generator will detect the kind of layer you selected, and automatically skip Symbols and other entities that can't be converted into a Text/Shared Style.
