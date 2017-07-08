@@ -28,7 +28,7 @@ If you're looking at a similar approach to automate the **Symbols** creation, [B
 
 ## Installation
 * [Download](https://github.com/lucaorio/https://github.com/lucaorio/sketch-styles-generator/releases/latest) the latest release of the plugin
-* Uncompress the `sketch-style-generator.zip` file
+* Uncompress the `sketch-styles-generator.zip` file
 * Double-click `Sketch Styles Generator.sketchplugin` to install it
 
 ## Usage
