@@ -1,0 +1,64 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "sketch"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "array-bracket-spacing": ["warn", "never"],
+    "arrow-spacing": ["warn", {
+      "before": true,
+      "after": true
+    }],
+    "block-spacing": ["warn", "always"],
+    "brace-style": ["warn", "1tbs"],
+    "comma-spacing": ["warn", {"before": false, "after": true}],
+    "computed-property-spacing": ["warn", "never"],
+    "func-call-spacing": ["warn", "never"],
+    "func-style": ["warn", "expression", {"allowArrowFunctions": true}],
+    "indent": ["warn", 2],
+    "line-comment-position": ["warn", {"position": "above"}],
+    "keyword-spacing": ["warn", {"before": true}],
+    "key-spacing": ["warn", {
+      "beforeColon": false,
+      "afterColon": true,
+      "mode": "strict"
+    }],
+    "no-console": ["off"],
+    "no-extra-semi": "warn",
+    "no-tabs": "warn",
+    "no-whitespace-before-property": "warn",
+    "no-unused-vars": "warn",
+    "object-curly-spacing": ["warn", "never"],
+    "object-property-newline": "warn",
+    "quote-props": ["warn", "as-needed"],
+    "quotes": ["warn", "single"],
+
+    "space-before-function-paren": ["warn", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "space-in-parens": ["warn", "never"],
+    "space-infix-ops": "warn",
+    "space-unary-ops": ["warn", {
+      "words": true,
+      "nonwords": false
+    }],
+    "semi": ["warn", "always"],
+    "semi-spacing": "warn",
+    "space-before-blocks": "warn"
+  },
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "log": true
+  }
+}

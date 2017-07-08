@@ -1,0 +1,21 @@
+{
+  "author" : "Luca Orio",
+	"name": "Styles Generator",
+  "compatibleVersion": 3,
+	"bundleVersion": 1,
+  "identifier": "com.sketch.styles.generator",
+	"commands": [{
+		"name": "Generate Shared Styles",
+		"identifier": "generate",
+		"script": "./generate.js",
+		"description": "Programmatically generate Shared Styles based on the layers name",
+    "icon" : "icons/styles-generator.png",
+		"shortcut": "ctrl cmd s"
+	}],
+	"menu": {
+		"title": "Styles Generator",
+		"items": [
+			"generate"
+		]
+	}
+}
