@@ -26,6 +26,11 @@ If you experienced at least one of the problems above, you know how painful the 
 
 If you're looking at a similar approach to automate the **Symbols** creation, [Batch Create Symbols](https://github.com/demersdesigns/sketch-batch-create-symbols) released by [Paul Demers](https://twitter.com/demersdesigns) is what you're looking for.
 
+## Installation
+* [Download](https://github.com/lucaorio/https://github.com/lucaorio/sketch-styles-generator/releases/latest) the latest release of the plugin
+* Uncompress the `sketch-style-generator.zip` file
+* Double-click `Sketch Styles Generator.sketchplugin` to install it
+
 ## Usage
 * **Rename** the layers you want to generate your Shared Styles from. The speed of this boring process can be *dramatically* improved by using plugins like [Find-And-Replace](https://github.com/mscodemonkey/Sketch-Find-And-Replace) and [RenameIt](https://github.com/rodi01/RenameIt).
 * **Select** all of them, it doesn't matter if they are Shape or Text entities
