@@ -27,7 +27,7 @@ If you experienced at least one of the problems above, you know how painful the 
 If you're looking at a similar approach to automate the **Symbols** creation, [Batch Create Symbols](https://github.com/demersdesigns/sketch-batch-create-symbols) released by [Paul Demers](https://twitter.com/demersdesigns) is what you're looking for.
 
 ## Installation
-* [Download](https://github.com/lucaorio/https://github.com/lucaorio/sketch-styles-generator/releases/latest) the latest release of the plugin
+* [Download](https://github.com/lucaorio/sketch-styles-generator/releases/latest) the latest release of the plugin
 * Uncompress the `sketch-styles-generator.zip` file
 * Double-click `Sketch Styles Generator.sketchplugin` to install it
 
