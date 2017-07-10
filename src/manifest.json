@@ -1,9 +1,10 @@
 {
-  "author" : "Luca Orio",
+  "author": "Luca Orio",
 	"name": "Styles Generator",
   "compatibleVersion": 3,
 	"bundleVersion": 1,
   "identifier": "com.sketch.styles.generator",
+  "appcast": "https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/appcast.xml",
 	"commands": [{
 		"name": "Generate Shared Styles",
 		"identifier": "generate",
