@@ -1,38 +1,38 @@
 {
-	"name": "sketch-styles-generator",
-	"version": "1.3.1",
+  "name": "sketch-styles-generator",
+  "version": "1.3.1",
   "description": "Programmatically generate Shared Styles based on the layers name",
   "author": "Luca Orio",
   "homepage": "https://github.com/lucaorio/sketch-styles-generator#readme",
-	"main": "plugin.sketchplugin",
-	"scripts": {
-		"test": "",
-		"build": "skpm build",
-		"publish": "skpm publish"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/lucaorio/sketch-styles-generator.git"
-	},
-	"keywords": [
-		"sketch",
-		"sketchapp",
-		"plugin",
-		"styles",
-		"generator",
-		"styles generator"
-	],
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/lucaorio/sketch-styles-generator/issues"
-	},
-	"engines": {
-		"sketch": ">=3.0"
-	},
-	"manifest": "src/manifest.json",
-	"devDependencies": {
-		"eslint": "^4.0.0",
-		"eslint-config-sketch": "^0.2.2",
-		"skpm": "^0.9.14"
-	}
+  "main": "plugin.sketchplugin",
+  "scripts": {
+    "test": "",
+    "build": "skpm build",
+    "publish": "skpm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaorio/sketch-styles-generator.git"
+  },
+  "keywords": [
+    "sketch",
+    "sketchapp",
+    "plugin",
+    "styles",
+    "generator",
+    "styles generator"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucaorio/sketch-styles-generator/issues"
+  },
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "manifest": "src/manifest.json",
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-sketch": "^0.2.2",
+    "skpm": "^0.9.14"
+  }
 }
