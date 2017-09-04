@@ -35,7 +35,7 @@ If you need a similar approach to automate the **Symbols** creation, [Batch Crea
 #### Via Sketch Runner
 * Trigger [Sketch Runner](http://bit.ly/SketchRunnerWebsite) (`cmd+'`)
 * Move to the *Install* tab
-* Search for *Sketch Styles Generator* and install it
+* Search for *Styles Generator* and install it
 
 ## Usage
 * **Rename** the layers you want to generate your Shared Styles from. The speed of this boring process can be *dramatically* improved by using plugins like [Find-And-Replace](https://github.com/mscodemonkey/Sketch-Find-And-Replace) and [RenameIt](https://github.com/rodi01/RenameIt).
