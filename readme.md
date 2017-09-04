@@ -33,14 +33,14 @@ If you need a similar approach to automate the **Symbols** creation, [Batch Crea
 * Double-click `Sketch Styles Generator.sketchplugin` to install it
 
 #### Via Sketch Runner
-* Trigger [Sketch Runner](http://bit.ly/SketchRunnerWebsite) (`cmd`+`'`)
+* Trigger [Sketch Runner](http://bit.ly/SketchRunnerWebsite) (`cmd+'`)
 * Move to the *Install* tab
 * Search for *Sketch Styles Generator* and install it
 
 ## Usage
 * **Rename** the layers you want to generate your Shared Styles from. The speed of this boring process can be *dramatically* improved by using plugins like [Find-And-Replace](https://github.com/mscodemonkey/Sketch-Find-And-Replace) and [RenameIt](https://github.com/rodi01/RenameIt).
 * **Select** all of them, it doesn't matter if they are Shape or Text entities
-* **Run** the plugin by clicking `Plugins->Styles Generator->Generate Shared Styles`, or by using the `ctrl`+`cmd`+`s` shortcut
+* **Run** the plugin by clicking `Plugins->Styles Generator->Generate Shared Styles`, or by using the `ctrl+cmd+s` shortcut
 * A little log on the bottom of the window will show you how many Styles were generated, and how many were updated.
 
 ![Styles Generator Usage](images/img-usage.gif)
