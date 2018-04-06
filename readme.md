@@ -1,10 +1,15 @@
 # Sketch Styles Generator
-![Sketch Styles Generator](images/img-header.jpg)
+![Sketch Styles Generator](https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-header.jpg)
 > Programmatically generate hundreds Shared Styles, all at once
 
 **Sketch Styles Generator** is a plugin made for [Sketch](http://sketchapp.com). It helps designers who want to generate *Shared Styles* for a *Design System* in a matter of seconds.
 
 Follow me on Twitter [@lucaorio_](https://twitter.com/lucaorio_) for updates, help and other stuff! 🎉
+
+*Looking for other plugins? Give these a try!* 😎
+
+[<img alt="Sketch Resize" src="https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-sketch-resize.jpg" height="111px"/>](https://github.com/lucaorio/sketch-resize)
+[<img alt="Sketch Reverse" src="https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-sketch-reverse.jpg" height="111px"/>](https://github.com/lucaorio/sketch-reverse)
 
 ## Contents
 - [Why this Plugin?](#why-this-plugin)
@@ -43,7 +48,7 @@ If you need a similar approach to automate the **Symbols** creation, [Batch Crea
 * **Run** the plugin by clicking `Plugins->Styles Generator->Generate Shared Styles`, or by using the `ctrl+cmd+s` shortcut
 * A little log on the bottom of the window will show you how many Styles were generated, and how many were updated.
 
-![Styles Generator Usage](images/img-usage.gif)
+![Styles Generator Usage](https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-usage.gif)
 
 ## FAQ
 #### What happens if in my multiple selection there are some Symbols/Groups?
@@ -52,7 +57,7 @@ Sketch Styles Generator will detect the kind of layer you selected, and automati
 ## Integrations
 *Sketch Styles Generator* is now fully integrated with [Sketch Runner](http://bit.ly/SketchRunnerWebsite), the ultimate tool to speed up your Sketch workflow. You can trigger the plugin by simply typing its first letters, in pure Spotlight style!
 
-![Sketch Runner Integration](images/img-sketch-runner.jpg)
+![Sketch Runner Integration](https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-sketch-runner.jpg)
 
 <a href="http://bit.ly/SketchRunnerWebsite">
   <img width="160" height="40" src="http://sketchrunner.com/img/badge_blue.png">
