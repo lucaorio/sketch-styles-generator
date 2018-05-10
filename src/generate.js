@@ -49,14 +49,24 @@ const compare = (name, styles) => Object.keys(styles).find(x => x == name);
 
 // create new layer style
 const create = (name, style, styles, count) => {
-  styles.addSharedStyleWithName_firstInstance(name, style);
+  if (styles.addSharedStyleWithName_firstInstance) {
+    styles.addSharedStyleWithName_firstInstance(name, style);
+  } else {
+    const s = MSSharedStyle.alloc().initWithName_firstInstance(name, style);
+    styles.addSharedObject(s);
+  }
   count.created++;
 };
 
 // update existing layer style, syncronize the instances
 const update = (style, pointer, styles, count) => {
-  styles.updateValueOfSharedObject_byCopyingInstance(pointer, style);
-  styles.synchroniseInstancesOfSharedObject_withInstance(pointer, style);
+  if (styles.updateValueOfSharedObject_byCopyingInstance) {
+    styles.updateValueOfSharedObject_byCopyingInstance(pointer, style);
+    styles.synchroniseInstancesOfSharedObject_withInstance(pointer, style);
+  } else {
+    pointer.updateToMatch(style);
+    pointer.resetReferencingInstances();
+  }
   count.updated++;
 };
 
