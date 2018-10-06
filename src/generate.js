@@ -1,79 +1,66 @@
-// main
-const generate = ctx => {
-  const doc = ctx.document;
-  const sel = ctx.api().selectedDocument.selectedLayers;
-  const lyrStyles = doc.documentData().layerStyles();
-  const txtStyles = doc.documentData().layerTextStyles();
+import sketch from "sketch";
+import * as R from "ramda";
 
-  let count = {
-    created: 0,
-    updated: 0
-  };
+const generate = () => {
+  const document = sketch.getSelectedDocument();
+  const layerStyles = document.getSharedLayerStyles();
+  const textStyles = document.getSharedTextStyles();
+  const selection = document.selectedLayers;
+  const layers = selection.layers;
+  const count = { created: 0, updated: 0 };
 
-  if (sel.isEmpty) {
-    exit(doc, 'No layer(s) selected!');
+  if (selection.isEmpty) {
+    sketch.UI.message("No layer(s) selected!");
   } else {
-    iterate(sel, 'isShape', lyrStyles, count);
-    iterate(sel, 'isText', txtStyles, count);
-    exit(doc, 'Styles Created: ' + count.created + ' / Updated: ' + count.updated);
+    R.forEachObjIndexed((layers, type) => {
+      const sharedStyles = type == "ShapePath" ? layerStyles : textStyles;
+
+      layers.forEach(layer => {
+        const sharedStyleIdx = exist(layer.name, sharedStyles);
+
+        if (sharedStyleIdx == -1) {
+          create(document, layer);
+          count.created++;
+        } else {
+          update(sharedStyles, sharedStyles[sharedStyleIdx], layer);
+          count.updated++;
+        }
+      });
+    }, groupType(layers));
+
+    sketch.UI.message(
+      `Styles Created: ${count.created} / Updated: ${count.updated}`
+    );
   }
 };
 
-// iterate on selected layers
-const iterate = (sel, filter, styles, count) => {
-  sel.iterateWithFilter(filter, function (layer) {
-    const name = layer.sketchObject.name();
-    const style = layer.sketchObject.style();
-    const cleanObj = existing(styles);
-    const exist = compare(name, cleanObj);
-
-    if (exist) update(style, cleanObj[name], styles, count);
-    else create(name, style, styles, count);
+// create shared styles
+const create = (document, layer) => {
+  const sharedStyle = sketch.SharedStyle.fromStyle({
+    name: layer.name,
+    style: layer.style,
+    document: document
   });
+
+  layer.sharedStyle = sharedStyle;
 };
 
-// creates a decent object for existing styles
-const existing = styles => {
-  const cleanObj = {};
+// update shared styles, and sync instances
+const update = (sharedStyles, sharedStyle, layer) => {
+  layer.sharedStyle.style = layer.style;
 
-  for (let i = 0; i < styles.numberOfSharedStyles(); i++) {
-    const entry = styles.objects().objectAtIndex(i);
-    cleanObj[entry.name()] = entry;
-  }
-
-  return cleanObj;
+  R.map(layer => {
+    if (layer.style.isOutOfSyncWithSharedStyle(sharedStyle)) {
+      layer.style.syncWithSharedStyle(sharedStyle);
+    }
+  }, sharedStyle.getAllInstancesLayers());
 };
 
-// compare layer name to styles object
-const compare = (name, styles) => Object.keys(styles).find(x => x == name);
+// group layers by type
+const groupType = R.groupBy(layer => layer.type);
 
-// create new layer style
-const create = (name, style, styles, count) => {
-  if (styles.addSharedStyleWithName_firstInstance) {
-    styles.addSharedStyleWithName_firstInstance(name, style);
-  } else {
-    const s = MSSharedStyle.alloc().initWithName_firstInstance(name, style);
-    styles.addSharedObject(s);
-  }
-  count.created++;
-};
-
-// update existing layer style, syncronize the instances
-const update = (style, pointer, styles, count) => {
-  if (styles.updateValueOfSharedObject_byCopyingInstance) {
-    styles.updateValueOfSharedObject_byCopyingInstance(pointer, style);
-    styles.synchroniseInstancesOfSharedObject_withInstance(pointer, style);
-  } else {
-    pointer.updateToMatch(style);
-    pointer.resetReferencingInstances();
-  }
-  count.updated++;
-};
-
-// exit and print message
-const exit = (doc, msg) => {
-  doc.showMessage(msg);
-  doc.reloadInspector();
-};
+// check existence of shared style w/ same name
+const exist = (name, sharedStyles) =>
+  R.findIndex(R.propEq("name", name))(sharedStyles);
 
 export default generate;
