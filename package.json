@@ -32,10 +32,7 @@
     "build": "skpm-build",
     "watch": "skpm-build --watch",
     "start": "skpm-build --watch --run",
-    "postinstall": "npm run build && skpm-link",
-    "lint-staged": "lint-staged",
-    "prettier:base": "prettier --single-quote --trailing-comma es5 --no-semi --write",
-    "prettify": "npm run prettier:base \"./src/**/*.js\""
+    "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
     "@skpm/builder": "^0.4.2",
@@ -49,15 +46,5 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.7.4",
     "ramda": "^0.25.0"
-  },
-  "pre-commit": [
-    "lint-staged"
-  ],
-  "lint-staged": {
-    "*.js": [
-      "npm run prettier:base",
-      "eslint --quiet --rule 'prettier/prettier: [\"error\", {\"trailingComma\": \"es5\", \"singleQuote\": true}]'",
-      "git add"
-    ]
   }
 }
