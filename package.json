@@ -1,6 +1,6 @@
 {
   "name": "sketch-styles-generator",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Programmatically generate Shared Styles based on the layers name",
   "author": "Luca Orio",
   "homepage": "https://github.com/lucaorio/sketch-styles-generator#readme",
