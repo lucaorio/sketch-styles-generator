@@ -3,8 +3,8 @@ import * as R from "ramda";
 
 const generate = () => {
   const document = sketch.getSelectedDocument();
-  const layerStyles = document.getSharedLayerStyles();
-  const textStyles = document.getSharedTextStyles();
+  const layerStyles = document.sharedLayerStyles;
+  const textStyles = document.sharedTextStyles;
   const selection = document.selectedLayers;
   const layers = selection.layers;
   const count = { created: 0, updated: 0 };
