@@ -42,9 +42,6 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-no-not-accumulator-reassign": "^0.1.0",
     "eslint-plugin-prettier": "^2.3.1",
-    "lint-staged": "^4.2.3",
-    "pre-commit": "^1.2.2",
-    "prettier": "^1.7.4",
-    "ramda": "^0.25.0"
+    "prettier": "^1.7.4"
   }
 }
