@@ -1,6 +1,6 @@
 # Sketch Styles Generator
 
-![Sketch Styles Generator](https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-header.jpg)
+![Sketch Styles Generator](images/img-header.jpg)
 
 > Programmatically generate hundreds Shared Styles, all at once
 
@@ -12,8 +12,8 @@ Follow me on Twitter [@lucaorio\_](https://twitter.com/lucaorio_) for updates, h
 
 _Looking for other plugins? Give these a try!_ 😎
 
-[<img alt="Sketch Resize" src="https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-sketch-resize.jpg" height="111px"/>](https://github.com/lucaorio/sketch-resize)
-[<img alt="Sketch Reverse" src="https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-sketch-reverse.jpg" height="111px"/>](https://github.com/lucaorio/sketch-reverse)
+[<img alt="Sketch Resize" src="images/img-sketch-resize.jpg" height="111px"/>](https://github.com/lucaorio/sketch-resize)
+[<img alt="Sketch Reverse" src="images/img-sketch-reverse.jpg" height="111px"/>](https://github.com/lucaorio/sketch-reverse)
 
 ## Contents
 
@@ -51,7 +51,7 @@ _Looking for other plugins? Give these a try!_ 😎
 - **Run** the plugin by clicking `Plugins->Styles Generator->Generate Shared Styles`, or by using the `ctrl+cmd+s` shortcut
 - A log will recap what has been generated/updated
 
-![Styles Generator Usage](https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-usage.gif)
+![Styles Generator Usage](images/img-usage.gif)
 
 ## FAQ
 
@@ -85,7 +85,7 @@ Below is a quick overview of how the plugin works behind the scenes. Please note
 
 _Sketch Styles Generator_ is now fully integrated with [Sketch Runner](http://bit.ly/SketchRunnerWebsite), the ultimate tool to speed up your Sketch workflow. You can trigger the plugin by simply typing its name.
 
-![Sketch Runner Integration](https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/images/img-sketch-runner.jpg)
+![Sketch Runner Integration](images/img-sketch-runner.jpg)
 
 <a href="http://bit.ly/SketchRunnerWebsite">
   <img width="160" height="40" src="http://sketchrunner.com/img/badge_blue.png">
