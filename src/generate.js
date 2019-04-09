@@ -1,66 +1,84 @@
-import sketch from "sketch";
-import * as R from "ramda";
+import sketch from 'sketch';
+import createStyle from './actions/createStyle';
+import syncLayerToShared from './actions/syncLayerToShared';
+import syncSharedToLayer from './actions/syncSharedToLayer';
+import renameSharedStyle from './actions/renameSharedStyle';
+import cleanArray from './utils/cleanArray';
+import isShape from './utils/isShape';
+import isUnsynced from './utils/isUnsynced';
+import getSharedStyleByID from './utils/getSharedStyleByID';
+import getSharedStyleByName from './utils/getSharedStyleByName';
 
+// main constants definition, and selection check
 const generate = () => {
   const document = sketch.getSelectedDocument();
-  const layerStyles = document.getSharedLayerStyles();
-  const textStyles = document.getSharedTextStyles();
   const selection = document.selectedLayers;
-  const layers = selection.layers;
-  const count = { created: 0, updated: 0 };
+  const layers = cleanArray(selection.layers);
 
-  if (selection.isEmpty) {
-    sketch.UI.message("No layer(s) selected!");
+  const counter = {
+    created: 0,
+    applied: 0,
+    renamed: 0,
+    synced: 0,
+    syncedrenamed: 0
+  };
+
+  if (selection.isEmpty || !layers.length) {
+    sketch.UI.message('No applicable layer(s) selected!');
   } else {
-    R.forEachObjIndexed((layers, type) => {
-      const sharedStyles = type == "ShapePath" ? layerStyles : textStyles;
+    const layerStyles = document.sharedLayerStyles;
+    const textStyles = document.sharedTextStyles;
 
-      layers.forEach(layer => {
-        const sharedStyleIdx = exist(layer.name, sharedStyles);
+    for (let layer of layers) {
+      const sharedStyles = isShape(layer) ? layerStyles : textStyles;
+      const styled = getSharedStyleByID(sharedStyles, layer.sharedStyleId);
+      const matched = getSharedStyleByName(sharedStyles, layer.name);
+      const unsynced = isUnsynced(sharedStyles, styled, layer);
 
-        if (sharedStyleIdx == -1) {
-          create(document, layer);
-          count.created++;
-        } else {
-          update(sharedStyles, sharedStyles[sharedStyleIdx], layer);
-          count.updated++;
-        }
-      });
-    }, groupType(layers));
+      // no shared style / no sync / no matching name
+      if (!styled && !unsynced && !matched) {
+        createStyle(sharedStyles, layer);
+        counter.created++;
+      }
 
-    sketch.UI.message(
-      `Styles Created: ${count.created} / Updated: ${count.updated}`
+      // no shared style / no sync / yes matching name
+      else if (!styled && !unsynced && matched) {
+        syncLayerToShared(matched, layer);
+        counter.applied++;
+      }
+
+      // yes shared style / yes sync / no matching name
+      else if (styled && !unsynced && !matched) {
+        renameSharedStyle(styled, layer);
+        counter.renamed++;
+      }
+
+      // yes shared style / no sync / yes matching name
+      else if (styled && unsynced && matched) {
+        syncSharedToLayer(unsynced, layer);
+        counter.synced++;
+      }
+
+      // yes shared style / no sync / no matching name
+      else if (styled && unsynced && !matched) {
+        syncSharedToLayer(unsynced, layer);
+        renameSharedStyle(unsynced, layer);
+        counter.syncedrenamed++;
+      }
+    }
+
+    // log the counter
+    sketch.UI.alert(
+      'Shared Styles Recap',
+      `
+      - Created: ${counter.created}\n
+      - Applied: ${counter.applied}\n
+      - Renamed: ${counter.renamed}\n
+      - Synced: ${counter.synced}\n
+      - Renamed & Synced: ${counter.syncedrenamed}
+      `
     );
   }
 };
-
-// create shared styles
-const create = (document, layer) => {
-  const sharedStyle = sketch.SharedStyle.fromStyle({
-    name: layer.name,
-    style: layer.style,
-    document: document
-  });
-
-  layer.sharedStyle = sharedStyle;
-};
-
-// update shared styles, and sync instances
-const update = (sharedStyles, sharedStyle, layer) => {
-  layer.sharedStyle.style = layer.style;
-
-  R.map(layer => {
-    if (layer.style.isOutOfSyncWithSharedStyle(sharedStyle)) {
-      layer.style.syncWithSharedStyle(sharedStyle);
-    }
-  }, sharedStyle.getAllInstancesLayers());
-};
-
-// group layers by type
-const groupType = R.groupBy(layer => layer.type);
-
-// check existence of shared style w/ same name
-const exist = (name, sharedStyles) =>
-  R.findIndex(R.propEq("name", name))(sharedStyles);
 
 export default generate;
