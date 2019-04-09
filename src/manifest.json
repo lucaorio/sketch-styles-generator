@@ -5,18 +5,18 @@
   "bundleVersion": 1,
   "identifier": "com.sketch.styles.generator",
   "appcast": "https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/appcast.xml",
-  "commands": [{
-    "name": "Generate Shared Styles",
-    "identifier": "generate",
-    "script": "./generate.js",
-    "description": "Programmatically generate Shared Styles based on the layers name",
-    "icon" : "icons/styles-generator.png",
-    "shortcut": "ctrl cmd s"
-    }],
-    "menu": {
-      "title": "Styles Generator",
-      "items": [
-        "generate"
-      ]
+  "commands": [
+    {
+      "name": "Generate Shared Styles",
+      "identifier": "generate",
+      "script": "./generate.js",
+      "description": "Programmatically generate Shared Styles based on the layers name",
+      "icon": "icons/styles-generator.png",
+      "shortcut": "ctrl cmd s"
     }
+  ],
+  "menu": {
+    "title": "Styles Generator",
+    "items": ["generate"]
+  }
 }
