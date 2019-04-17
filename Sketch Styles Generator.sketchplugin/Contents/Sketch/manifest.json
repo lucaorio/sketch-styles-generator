@@ -11,7 +11,7 @@
       "identifier": "generate",
       "script": "generate.js",
       "description": "Programmatically generate Shared Styles based on the layers name",
-      "icon": "icons/styles-generator.png",
+      "icon": "sketch-runner-icon.png",
       "shortcut": "ctrl cmd s"
     }
   ],
@@ -21,7 +21,7 @@
       "generate"
     ]
   },
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Programmatically generate Shared Styles based on the layers name",
   "homepage": "https://github.com/lucaorio/sketch-styles-generator#readme",
   "disableCocoaScriptPreprocessor": true
