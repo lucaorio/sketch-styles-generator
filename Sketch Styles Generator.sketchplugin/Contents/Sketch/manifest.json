@@ -11,7 +11,7 @@
       "identifier": "generate",
       "script": "generate.js",
       "description": "Programmatically generate Shared Styles based on the layers name",
-      "icon": "icons/styles-generator.png",
+      "icon": "sketch-runner-icon.png",
       "shortcut": "ctrl cmd s"
     }
   ],
