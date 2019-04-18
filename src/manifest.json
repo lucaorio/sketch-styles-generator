@@ -4,6 +4,7 @@
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "identifier": "com.sketch.styles.generator",
+  "icon": "sketch-icon.png",
   "appcast": "https://raw.githubusercontent.com/lucaorio/sketch-styles-generator/master/appcast.xml",
   "commands": [
     {
