@@ -75,5 +75,16 @@
         </description>
         <enclosure url="https://github.com/lucaorio/sketch-styles-generator/releases/download/v1.5.1/sketch-styles-generator.zip" sparkle:version="1.5.1" />
       </item>
+      <item>
+        <title>Sketch Styles Generator 1.6.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Added regular icon</li>
+            </ul>
+          ]]>
+        </description>
+        <enclosure url="https://github.com/lucaorio/sketch-styles-generator/releases/download/v1.6.0/sketch-styles-generator.zip" sparkle:version="1.6.0" />
+      </item>
   </channel>
 </rss>
